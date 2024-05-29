@@ -27,7 +27,7 @@ switch($_POST['accion']){
         $lugar= $_POST['lugar'];
         $responsable= $_POST['responsable'];
         $estado= $_POST['estado'];
-        $proyecto = new Proyecto(7, $descripcion, $fechainicio, $fechaentrega, $valor, $lugar, $responsable, $estado);
+        $proyecto = new Proyecto($id, $descripcion, $fechainicio, $fechaentrega, $valor, $lugar, $responsable, $estado);
         actualizar_proyecto($proyecto);
         header("Location: ../View/proyectoview.php");
         

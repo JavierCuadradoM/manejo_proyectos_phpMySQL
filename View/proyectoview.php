@@ -51,7 +51,7 @@ $proyectos = findAll_proyectos();
             </table>
         </section>
         <section>
-            <h3>Crear nuevo Usuario</h3>
+            <h3>Crear nuevo Proyecto</h3>
             <form action="../Controller/CRUDProyecto.php" method="post">
                 <input type="hidden" name="accion" value="insertar">
             
@@ -102,7 +102,7 @@ $proyectos = findAll_proyectos();
             <form action="../Controller/CRUDProyecto.php" method="post">
                 <input type="hidden" name="accion" value="actualizar">
 
-                <label>Selecciona Usuario: 
+                <label>Seleccion: 
                     <select  required name="idproyecto">
                         <option selected disabled value="0" >Seleccione</option>
                         <?php foreach($proyectos as $datos): ?>

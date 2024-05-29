@@ -21,7 +21,7 @@ class Actividad{
 //    }
 
     public function get_descripcion(){
-        return $this->idActividad;
+        return $this->descripcion;
     }
 
     public function set_descripcion($descripcion){
@@ -72,11 +72,11 @@ class Actividad{
 
     
     public function get_presupuesto(){
-        return $this->idProyecto;
+        return $this->presupuesto;
     }
 
-    public function set_presupuesto($idProyecto){
-        $this->idProyecto = $idProyecto;
+    public function set_presupuesto($presupuesto){
+        $this->presupuesto = $presupuesto;
     }
 
 
