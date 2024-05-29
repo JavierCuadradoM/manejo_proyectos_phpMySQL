@@ -91,7 +91,7 @@ INSERT INTO proyectos (descripcion, fechainicio, fechaentrega, valor, lugar, res
 ('Proyecto Epsilon', '2023-05-30', '2023-10-30', 25000.00, 'Ciudad E', 5, 'En progreso');
 
 -- Insertar datos en la tabla actividades
-INSERT INTO actividades (descripcion, fechainicio, fechafin, fk_idproyecto, responsable, estado) VALUES
+INSERT INTO actividades (descripcion, fechainicio, fechafin, fk_idproyecto, responsable, estado, presupuesto) VALUES
 ('Actividad 1', '2023-01-15', '2023-02-15', 1, 1, 'En progreso', 754654),
 ('Actividad 2', '2023-02-20', '2023-03-20', 2, 2, 'En progreso',54000),
 ('Actividad 3', '2023-03-25', '2023-04-25', 3, 3, 'En progreso',89664),
