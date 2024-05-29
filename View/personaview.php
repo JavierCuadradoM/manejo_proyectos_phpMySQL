@@ -1,7 +1,7 @@
 <?php
-include_once '../Controller/PersonaDAO.php';
+require_once '../Controller/PersonaDAO.php';
 
-$datos = findAll_personas();
+$personas = findAll_personas();
 ?>
 
 <!DOCTYPE html>
@@ -33,16 +33,16 @@ $datos = findAll_personas();
                     </tr>
                 </thead>
                 <tbody>
-                    <?php foreach($datos as $personas):?>
+                    <?php foreach($personas as $datos):?>
                         <?php echo '<tr>'?>
-                        <?php echo '<td>'.$personas['idpersona'].'</td>'?>
-                        <?php echo '<td>'.$personas['nombre'].'</td>'?>
-                        <?php echo '<td>'.$personas['apellido'].'</td>'?>
-                        <?php echo '<td>'.$personas['direccion'].'</td>'?>
-                        <?php echo '<td>'.$personas['telefono'].'</td>'?>
-                        <?php echo '<td>'.$personas['sexo'].'</td>'?>
-                        <?php echo '<td>'.$personas['fechanacimiento'].'</td>'?>
-                        <?php echo '<td>'.$personas['profesion'].'</td>'?>
+                        <?php echo '<td>'.$datos['idpersona'].'</td>'?>
+                        <?php echo '<td>'.$datos['nombre'].'</td>'?>
+                        <?php echo '<td>'.$datos['apellido'].'</td>'?>
+                        <?php echo '<td>'.$datos['direccion'].'</td>'?>
+                        <?php echo '<td>'.$datos['telefono'].'</td>'?>
+                        <?php echo '<td>'.$datos['sexo'].'</td>'?>
+                        <?php echo '<td>'.$datos['fechanacimiento'].'</td>'?>
+                        <?php echo '<td>'.$datos['profesion'].'</td>'?>
                         <?php echo '</tr>'?>
                     <?php endforeach?>
                 </tbody>
@@ -61,29 +61,36 @@ $datos = findAll_personas();
                 <input  required type="text" name="apellido">
                 </label>
                 </br>
+
                 <label>Direccion: 
                 <input  required type="text" name="direccion">
                 </label>
                 </br>
+
                 <label>Telefono: 
                 <input  required type="number" name="telefono">
                 </label>
                 </br>
+
                 <label>Sexo: 
                     <select  required name="sexo">
+                        <option selected disabled value="0" >Seleccione</option>
                         <option value="M">Masculino</option>
                         <option value="F">Femenino</option>
                     </select>
                 </label>
                 </br>
+
                 <label>Fecha Nacimiento: 
                     <input  required type="date" name="fechanacimiento">
                 </label>
                 </br>
+
                 <label>Profesion: 
                     <input required  type="text" name="profesion">
                 </label>
                 </br>
+
                 <button>Insertar datos</button>
             </form>
         </section>
@@ -95,8 +102,9 @@ $datos = findAll_personas();
 
                 <label>Selecciona Usuario: 
                     <select  required name="idpersona">
-                        <?php foreach($datos as $persona): ?>
-                            <?="<option value ='".$persona['idpersona']."'>".$persona['idpersona'].' - '.$persona['nombre']."</option>"?>
+                    <option selected disabled value="0" >Seleccione</option>
+                        <?php foreach($personas as $datos): ?>
+                            <?="<option value ='".$datos['idpersona']."'>".$datos['idpersona'].' - '.$datos['nombre']."</option>"?>
                         <?php endforeach?>
                     </select>
                 </label></br>
@@ -105,33 +113,41 @@ $datos = findAll_personas();
                     <input required  type="text" name="nombre">
                 </label>
                 </br>
+
                 <label>Apellido: 
                 <input required  type="text" name="apellido">
                 </label>
                 </br>
+
                 <label>Direccion: 
                 <input required  type="text" name="direccion">
                 </label>
                 </br>
+
                 <label>Telefono: 
                 <input  required type="number" name="telefono">
                 </label>
                 </br>
+
                 <label>Sexo: 
                     <select required  name="sexo">
+                        <option selected disabled value="0" >Seleccione</option>
                         <option value="M">Masculino</option>
                         <option value="F">Femenino</option>
                     </select>
                 </label>
                 </br>
+
                 <label>Fecha Nacimiento: 
                     <input  required type="date" name="fechanacimiento">
                 </label>
                 </br>
+
                 <label>Profesion: 
                     <input  required type="text" name="profesion">
                 </label>
                 </br>
+
                 <button>Actualzar datos</button>
             </form>
         </section>
@@ -143,11 +159,13 @@ $datos = findAll_personas();
 
                 <label>Selecciona Usuario: 
                     <select  required name="idpersona">
-                        <?php foreach($datos as $persona): ?>
-                            <?="<option value ='".$persona['idpersona']."'>".$persona['idpersona'].' - '.$persona['nombre']."</option>"?>
+                        <option selected disabled value="0" >Seleccione</option>
+                        <?php foreach($personas as $datos): ?>
+                            <?="<option value ='".$datos['idpersona']."'>".$datos['idpersona'].' - '.$datos['nombre']."</option>"?>
                         <?php endforeach?>
                     </select>
                 </label></br>
+
                 <button>Eliminar</button>
                 </form>
 

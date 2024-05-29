@@ -24,14 +24,15 @@ function insertar_proyecto(Proyecto $proyectos){
     $consulta->bindParam(':responsable', $proyectos->get_responsable());
     $consulta->bindParam(':estado', $proyectos->get_estado());
     
-    $consulta->execute();    
+    $consulta->execute();   
+    return true; 
 }
 
 function actualizar_proyecto(Proyecto $proyectos){
     $db = conectar();
     $consulta = $db->prepare("UPDATE proyectos SET descripcion = :descripcion, fechainicio = :fechainicio, 
     fechaentrega = :fechaentrega, valor = :valor, lugar = :lugar, responsable = :responsable, estado = :estado
-    WHERE idproyecto = :idProyecto;");
+    WHERE idproyecto = :idProyecto");
 
 $consulta->bindParam(':descripcion', $proyectos->get_descripcion());
 $consulta->bindParam(':fechainicio', $proyectos->get_fecha_inicio());
@@ -42,6 +43,7 @@ $consulta->bindParam(':responsable', $proyectos->get_responsable());
 $consulta->bindParam(':estado', $proyectos->get_estado());
 $consulta->bindParam(':idProyecto', $proyectos->get_id_proyecto());
 $consulta->execute();
+return true;
 }
 
 function eliminar_proyecto(Proyecto $proyectos){
@@ -49,12 +51,13 @@ function eliminar_proyecto(Proyecto $proyectos){
     $sentencia = $db->prepare("DELETE FROM proyectos WHERE idproyecto = :idProyecto");
     $sentencia->bindParam(':idProyecto', $proyectos->get_id_proyecto());
     $sentencia->execute();
+    return true;
 }
 
-$proyecto1 = new Proyecto(1,"proyecto seminario", "0", "0", 500000, "monteria", "departamento de ingenieria", "inconcluso");
+//$proyecto1 = new Proyecto(1,"proyecto seminario", "0", "0", 500000, "monteria", "departamento de ingenieria", "inconcluso");
 
 //insertar_proyecto($proyecto1);
 //actualizar_proyecto($proyecto1);
-eliminar_proyecto($proyecto1);
+//eliminar_proyecto($proyecto1);
 //var_dump(findAll_proyectos());
 ?>
