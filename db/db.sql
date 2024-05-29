@@ -92,11 +92,11 @@ INSERT INTO proyectos (descripcion, fechainicio, fechaentrega, valor, lugar, res
 
 -- Insertar datos en la tabla actividades
 INSERT INTO actividades (descripcion, fechainicio, fechafin, fk_idproyecto, responsable, estado) VALUES
-('Actividad 1', '2023-01-15', '2023-02-15', 1, 1, 'En progreso' 754654),
-('Actividad 2', '2023-02-20', '2023-03-20', 2, 2, 'En progreso'54000),
-('Actividad 3', '2023-03-25', '2023-04-25', 3, 3, 'En progreso'89664),
-('Actividad 4', '2023-04-30', '2023-05-30', 4, 4, 'En progreso'1414122),
-('Actividad 5', '2023-05-05', '2023-06-05', 5, 5, 'En progreso'5557798);
+('Actividad 1', '2023-01-15', '2023-02-15', 1, 1, 'En progreso', 754654),
+('Actividad 2', '2023-02-20', '2023-03-20', 2, 2, 'En progreso',54000),
+('Actividad 3', '2023-03-25', '2023-04-25', 3, 3, 'En progreso',89664),
+('Actividad 4', '2023-04-30', '2023-05-30', 4, 4, 'En progreso',1414122),
+('Actividad 5', '2023-05-05', '2023-06-05', 5, 5, 'En progreso',5557798);
 
 -- Insertar datos en la tabla tareas
 INSERT INTO tareas (descripcion, fechainicio, fechafin, fk_idactividad, estado, presupuesto) VALUES
