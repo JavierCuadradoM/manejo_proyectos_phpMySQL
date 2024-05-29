@@ -15,38 +15,54 @@ function insertar_tarea_persona(TareaPersona $tareapersona){
     $db = conectar();
     $consulta = $db->prepare("INSERT INTO tareapersona (fk_idtarea, fk_idpersona, duracion) 
     VALUES (:fk_idtarea, :fk_idpersona, :duracion)");
-    
-    $consulta->bindParam(':fk_idtarea', $tareapersona->get_id_tarea());
-    $consulta->bindParam(':fk_idpersona', $tareapersona->get_id_persona());
-    $consulta->bindParam(':duracion', $tareapersona->get_duracion());
-
-    
-    $consulta->execute();    
+    try {
+        $consulta->bindParam(':fk_idtarea', $tareapersona->get_id_tarea());
+        $consulta->bindParam(':fk_idpersona', $tareapersona->get_id_persona());
+        $consulta->bindParam(':duracion', $tareapersona->get_duracion());
+        $consulta->execute();
+        return true;
+    } catch (Exception $e) {
+        echo $e;
+        return false;
+    }
+        
 }
 
-function actualizar_tarea_persona(Recurso $recurso){
+function actualizar_tarea_persona(TareaPersona $tareapersona){
     $db = conectar();
     $consulta = $db->prepare("UPDATE tareapersona SET fk_idtarea = :fk_idtarea, fk_idpersona = :fk_idpersona, duracion = :duracion
-    WHERE fk_idtarea = :idtarea AND fk_idpersona = :idpersona;");
+    WHERE fk_idtarea = :idtarea AND fk_idpersona = :idpersona AND duracion = :;");
+    try {
+        $consulta->bindParam(':fk_idtarea', $tareapersona->get_id_tarea());
+        $consulta->bindParam(':fk_idpersona', $tareapersona->get_id_persona());
+        $consulta->bindParam(':duracion', $tareapersona->get_duracion());
+        $consulta->execute();
+        return true;
+    } catch (Exception $e) {
+        echo $e;
+        return false;
+    }
 
-$consulta->bindParam(':descripcion', $recurso->get_descripcion());
-$consulta->bindParam(':valor', $recurso->get_valor());
-$consulta->bindParam(':unidadmedida', $recurso->get_unidad_medida());
-$consulta->bindParam(':idrecurso', $recurso->get_id_recurso());
-$consulta->execute();
 }
 
-function eliminar_tarea_persona(Recurso $recurso){
+function eliminar_tarea_persona(TareaPersona $tareaPersona){
     $db = conectar();
-    $sentencia = $db->prepare("DELETE FROM recursos WHERE idrecurso = :idrecurso");
-    $sentencia->bindParam(':idrecurso', $recurso->get_id_recurso());
-    $sentencia->execute();
+    $sentencia = $db->prepare("DELETE FROM tareapersona WHERE fk_idtarea = :fk_idtarea AND fk_idpersona = :fk_idpersona");
+    try {
+        $sentencia->bindParam(':fk_idtarea', $tareaPersona->get_id_tarea());
+        $sentencia->bindParam(':fk_idpersona', $tareaPersona->get_id_persona());
+        $sentencia->execute();
+        return true;
+    } catch (Exception $e) {
+        echo $e;
+        return false;
+    }
+    
 }
+$tareapersona = new TareaPersona(1, 1,'Duracion');
 
-//$recurso1 = new Recurso(6,'Recurso 6', 500000, "Tonelada metrica");
-
-//insertar_recurso($recurso1);
-//actualizar_recurso($recurso1);
-//eliminar_recurso($proyecto1);
+//insertar_tarea_persona($tareapersona);
+//actualizar_tarea_persona($tareapersona);
+//eliminar_tarea_persona($tareapersona);
 var_dump(findAll_tarea_persona());
 ?>

@@ -15,7 +15,12 @@ function insertar_proyecto(Proyecto $proyectos){
     $db = conectar();
     $consulta = $db->prepare("INSERT INTO proyectos (descripcion, fechainicio, fechaentrega, valor, lugar, responsable, estado) 
     VALUES (:descripcion, :fechainicio, :fechaentrega, :valor, :lugar, :responsable, :estado)");
-    
+    try {
+        return true;
+    } catch (Exception $e) {
+        echo $e;
+        return false;
+    }
     $consulta->bindParam(':descripcion', $proyectos->get_descripcion());
     $consulta->bindParam(':fechainicio', $proyectos->get_fecha_inicio());
     $consulta->bindParam(':fechaentrega', $proyectos->get_fecha_entrega());
@@ -33,7 +38,12 @@ function actualizar_proyecto(Proyecto $proyectos){
     $consulta = $db->prepare("UPDATE proyectos SET descripcion = :descripcion, fechainicio = :fechainicio, 
     fechaentrega = :fechaentrega, valor = :valor, lugar = :lugar, responsable = :responsable, estado = :estado
     WHERE idproyecto = :idProyecto");
-
+    try {
+        return true;
+    } catch (Exception $e) {
+        echo $e;
+        return false;
+    }
 $consulta->bindParam(':descripcion', $proyectos->get_descripcion());
 $consulta->bindParam(':fechainicio', $proyectos->get_fecha_inicio());
 $consulta->bindParam(':fechaentrega', $proyectos->get_fecha_entrega());
@@ -49,6 +59,12 @@ return true;
 function eliminar_proyecto(Proyecto $proyectos){
     $db = conectar();
     $sentencia = $db->prepare("DELETE FROM proyectos WHERE idproyecto = :idProyecto");
+    try {
+        return true;
+    } catch (Exception $e) {
+        echo $e;
+        return false;
+    }
     $sentencia->bindParam(':idProyecto', $proyectos->get_id_proyecto());
     $sentencia->execute();
     return true;

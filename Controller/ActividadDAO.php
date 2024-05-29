@@ -15,16 +15,21 @@ function insertar_actividad(Actividad $actividad){
     $db = conectar();
     $consulta = $db->prepare("INSERT INTO actividades (descripcion, fechainicio, fechafin, fk_idproyecto, responsable, estado, presupuesto) 
     VALUES (:descripcion, :fechainicio, :fechafin, :fk_idproyecto, :responsable, :estado, :presupuesto)");
-    
-    $consulta->bindParam(':descripcion', $actividad->get_descripcion());
-    $consulta->bindParam(':fechainicio', $actividad->get_fecha_inicio());
-    $consulta->bindParam(':fechafin', $actividad->get_fecha_fin());
-    $consulta->bindParam(':fk_idproyecto', $actividad->get_id_proyecto());
-    $consulta->bindParam(':responsable', $actividad->get_responsable());
-    $consulta->bindParam(':presupuesto', $actividad->get_presupuesto());
-    $consulta->bindParam(':estado', $actividad->get_estado());
-    
-    $consulta->execute();    
+    try {
+        $consulta->bindParam(':descripcion', $actividad->get_descripcion());
+        $consulta->bindParam(':fechainicio', $actividad->get_fecha_inicio());
+        $consulta->bindParam(':fechafin', $actividad->get_fecha_fin());
+        $consulta->bindParam(':fk_idproyecto', $actividad->get_id_proyecto());
+        $consulta->bindParam(':responsable', $actividad->get_responsable());
+        $consulta->bindParam(':presupuesto', $actividad->get_presupuesto());
+        $consulta->bindParam(':estado', $actividad->get_estado());
+        $consulta->execute(); 
+        return true;
+    } catch (Exception $e) {
+        echo $e;
+        return false;
+    }
+       
 }
 
 function actualizar_actividad(Actividad $actividad){
@@ -33,22 +38,35 @@ function actualizar_actividad(Actividad $actividad){
     fk_idproyecto = :fk_idproyecto, responsable = :responsable, estado = :estado, presupuesto = :presupuesto
     WHERE idactividad = :idActividad;");
 
-$consulta->bindParam(':descripcion', $actividad->get_descripcion());
-$consulta->bindParam(':fechainicio', $actividad->get_fecha_inicio());
-$consulta->bindParam(':fechafin', $actividad->get_fecha_fin());
-$consulta->bindParam(':fk_idproyecto', $actividad->get_id_proyecto());
-$consulta->bindParam(':responsable', $actividad->get_responsable());
-$consulta->bindParam(':estado', $actividad->get_estado());
-$consulta->bindParam(':presupuesto', $actividad->get_presupuesto());
-$consulta->bindParam(':idActividad', $actividad->get_id_actividad());
-$consulta->execute();
+    try {
+        $consulta->bindParam(':descripcion', $actividad->get_descripcion());
+        $consulta->bindParam(':fechainicio', $actividad->get_fecha_inicio());
+        $consulta->bindParam(':fechafin', $actividad->get_fecha_fin());
+        $consulta->bindParam(':fk_idproyecto', $actividad->get_id_proyecto());
+        $consulta->bindParam(':responsable', $actividad->get_responsable());
+        $consulta->bindParam(':estado', $actividad->get_estado());
+        $consulta->bindParam(':presupuesto', $actividad->get_presupuesto());
+        $consulta->bindParam(':idActividad', $actividad->get_id_actividad());
+        $consulta->execute();
+        return true;
+    } catch (Exception $e) {
+        echo $e;
+        return false;
+    }
 }
 
 function eliminar_actividad(Actividad $actividad){
     $db = conectar();
     $sentencia = $db->prepare("DELETE FROM actividades WHERE idactividad = :idActividad");
-    $sentencia->bindParam(':idActividad', $actividad->get_id_actividad());
-    $sentencia->execute();
+    try {
+        $sentencia->bindParam(':idActividad', $actividad->get_id_actividad());
+        $sentencia->execute();
+        return true;
+    } catch (Exception $e) {
+        echo $e;
+        return false;
+    }
+    
 }
 
 //$proyecto1 = new Proyecto(1,"proyecto seminario", "0", "0", 500000, "monteria", "departamento de ingenieria", "inconcluso");

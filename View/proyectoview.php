@@ -9,14 +9,18 @@ $proyectos = findAll_proyectos();
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" href="../View/CSS/styles.css">
+    <!-- Centered viewport --> 
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.classless.min.css"
+/>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Proyectos Info</title>
 </head>
 <body>
     <header>
-        <h1 id="titulo">Personas registradas</h1>
+        <h1 id="titulo">Actividades registradas</h1>
     </header>
     <main>
         <section>
