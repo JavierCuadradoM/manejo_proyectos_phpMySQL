@@ -5,7 +5,11 @@ require_once '../Model/TareaPersona.php';
 
 function findAll_tarea_persona(){
     $db = conectar();
-    $consulta = $db->prepare("SELECT * FROM tareapersona");
+    $consulta = $db->prepare("SELECT idasignacion, tareas.idtarea, tareas.descripcion, tareas.fk_idactividad,
+    personas.idpersona, personas.nombre, personas.apellido, personas.profesion, duracion
+       FROM tareapersona
+       JOIN tareas ON tareapersona.fk_idtarea = tareas.idtarea
+       JOIN personas ON tareapersona.fk_idpersona = personas.idpersona");
     $consulta->execute();
     $resultado =$consulta->fetchAll(PDO::FETCH_ASSOC);
     return $resultado;
@@ -31,11 +35,12 @@ function insertar_tarea_persona(TareaPersona $tareapersona){
 function actualizar_tarea_persona(TareaPersona $tareapersona){
     $db = conectar();
     $consulta = $db->prepare("UPDATE tareapersona SET fk_idtarea = :fk_idtarea, fk_idpersona = :fk_idpersona, duracion = :duracion
-    WHERE fk_idtarea = :idtarea AND fk_idpersona = :idpersona AND duracion = :;");
+    WHERE idasignacion = :idasignacion;");
     try {
         $consulta->bindParam(':fk_idtarea', $tareapersona->get_id_tarea());
         $consulta->bindParam(':fk_idpersona', $tareapersona->get_id_persona());
         $consulta->bindParam(':duracion', $tareapersona->get_duracion());
+        $consulta->bindParam(':idasignacion', $tareapersona->get_id_asignacion());
         $consulta->execute();
         return true;
     } catch (Exception $e) {
@@ -47,10 +52,9 @@ function actualizar_tarea_persona(TareaPersona $tareapersona){
 
 function eliminar_tarea_persona(TareaPersona $tareaPersona){
     $db = conectar();
-    $sentencia = $db->prepare("DELETE FROM tareapersona WHERE fk_idtarea = :fk_idtarea AND fk_idpersona = :fk_idpersona");
+    $sentencia = $db->prepare("DELETE FROM tareapersona WHERE idasignacion = :idasignacion");
     try {
-        $sentencia->bindParam(':fk_idtarea', $tareaPersona->get_id_tarea());
-        $sentencia->bindParam(':fk_idpersona', $tareaPersona->get_id_persona());
+        $sentencia->bindParam(':idasignacion', $tareaPersona->get_id_asignacion());
         $sentencia->execute();
         return true;
     } catch (Exception $e) {
@@ -59,10 +63,10 @@ function eliminar_tarea_persona(TareaPersona $tareaPersona){
     }
     
 }
-$tareapersona = new TareaPersona(1, 1,'Duracion');
+//$tareapersona = new TareaPersona(1, 1,'Duracion');
 
 //insertar_tarea_persona($tareapersona);
 //actualizar_tarea_persona($tareapersona);
 //eliminar_tarea_persona($tareapersona);
-var_dump(findAll_tarea_persona());
+//var_dump(findAll_tarea_persona());
 ?>

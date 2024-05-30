@@ -1,11 +1,19 @@
 <?php
 class TareaRecurso{
     public function __construct(
+        private $idAsignacion,
         private $idTarea,
         private $idRecurso,
         private $cantidad
     )
     {}
+
+    public function get_id_asignacion(){
+        return $this->idAsignacion;
+    }
+    public function set_id_asignacion($idAsignacion){
+        $this->idAsignacion = $idAsignacion;
+    }
 
     public function get_id_tarea(){
         return $this->idTarea;
@@ -22,10 +30,10 @@ class TareaRecurso{
     }
 
     public function get_cantidad(){
-        return $this->idTarea;
+        return $this->cantidad;
     }
-    public function set_catidad($idTarea){
-        $this->idTarea = $idTarea;
+    public function set_catidad($cantidad){
+        $this->cantidad = $cantidad;
     }
 }
 ?>

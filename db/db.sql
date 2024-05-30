@@ -60,16 +60,20 @@ unidadmedida VARCHAR(30),
 PRIMARY KEY(idrecurso)
 );
 CREATE TABLE tarearecurso(
+idasignacion INT AUTO_INCREMENT  NOT NULL,
 fk_idtarea INT NOT NULL,
 fk_idrecurso INT NOT NULL,
 cantidad INT,
+PRIMARY KEY(idasignacion),
 FOREIGN KEY(fk_idtarea) REFERENCES tareas(idtarea),
 FOREIGN KEY(fk_idrecurso) REFERENCES recursos(idrecurso)
 );
 CREATE TABLE tareapersona(
+idasignacion INT AUTO_INCREMENT  NOT NULL,
 fk_idtarea INT NOT NULL,
 fk_idpersona INT NOT NULL,
-duracion VARCHAR(15),
+duracion TIME,
+PRIMARY KEY(idasignacion),
 FOREIGN KEY(fk_idtarea) REFERENCES tareas(idtarea),
 FOREIGN KEY(fk_idpersona) REFERENCES personas(idpersona)
 );
