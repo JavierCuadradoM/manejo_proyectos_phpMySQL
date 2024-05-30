@@ -14,7 +14,8 @@ switch($_POST['accion']){
         $presupuesto= $_POST['presupuesto'];
         $actividad = new Actividad($id, $descripcion, $fechainicio, $fechafin,$fk_idproyecto, $responsable, $estado, $presupuesto);
         insertar_actividad($actividad);
-        header("Location: ../View/actividadview.php");
+        echo "<script>alert('Exito al insertar'); window.location.href='../View/actividadview.php';</script>";
+        //header("Location: ../View/actividadview.php");
         
         break;
 
@@ -29,7 +30,8 @@ switch($_POST['accion']){
         $presupuesto= $_POST['presupuesto'];
         $actividad = new Actividad($id, $descripcion, $fechainicio, $fechafin,$fk_idproyecto, $responsable, $estado, $presupuesto);
         actualizar_actividad($actividad);
-        header("Location: ../View/actividadview.php");
+        echo "<script>alert('Exito al actualizar'); window.location.href='../View/actividadview.php';</script>";
+        //header("Location: ../View/actividadview.php");
         
         break;
 
@@ -37,7 +39,8 @@ switch($_POST['accion']){
         $id = $_POST['idactividad'];
         $actividad = new Actividad($id, '', '', '', '', '', '', '', '');
         eliminar_actividad($actividad);
-        header("Location: ../View/actividadview.php");
+        echo "<script>alert('Exito al eliminar'); window.location.href='../View/actividadview.php';</script>";
+        //header("Location: ../View/actividadview.php");
         break;
 }
 ?>

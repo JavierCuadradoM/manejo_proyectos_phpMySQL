@@ -1,5 +1,13 @@
 <?php
 require_once '../Controller/PersonaDAO.php';
+require_once '../db/conexion.php';
+
+$db = conectar();
+session_start();
+if (!isset($_SESSION['nombreusuario'])) {
+    header("Location: login.php");
+    exit();
+}
 
 $personas = findAll_personas();
 ?>

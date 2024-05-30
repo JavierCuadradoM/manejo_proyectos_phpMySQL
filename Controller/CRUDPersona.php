@@ -14,7 +14,8 @@ switch($_POST['accion']){
         $profesion= $_POST['profesion'];
         $persona = new Persona($id, $nombre, $apellido, $direccion, $telefono, $sexo, $fechanacimiento, $profesion);
         insertar_persona($persona);
-        header("Location: ../View/personaview.php");
+        echo "<script>alert('Exito al insertar'); window.location.href='../View/personaview.php';</script>";
+        //header("Location: ../View/personaview.php");
         
         break;
 
@@ -29,7 +30,8 @@ switch($_POST['accion']){
         $profesion= $_POST['profesion'];
         $persona = new Persona($id, $nombre, $apellido, $direccion, $telefono, $sexo, $fechanacimiento, $profesion);
         actualizar_persona($persona);
-        header("Location: ../View/personaview.php");
+        echo "<script>alert('Exito al actualizar'); window.location.href='../View/personaview.php';</script>";
+        //header("Location: ../View/personaview.php");
         
         break;
 
@@ -37,7 +39,8 @@ switch($_POST['accion']){
         $id = $_POST['idpersona'];
         $persona = new Persona($id, '', '', '', '', '', '', '', '');
         eliminar_persona($persona);
-        header("Location: ../View/personaview.php");
+        echo "<script>alert('Exito al eliminar'); window.location.href='../View/personaview.php';</script>";
+        //header("Location: ../View/personaview.php");
 
         break;
 }

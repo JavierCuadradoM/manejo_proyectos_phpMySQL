@@ -1,6 +1,13 @@
 CREATE DATABASE manejoproyectos;
 USE manejoproyectos;
 
+CREATE TABLE administradores(
+idadministrador INT AUTO_INCREMENT NOT NULL,
+nombreusuario VARCHAR(30),
+passwd VARCHAR(20),
+PRIMARY KEY (idadministrador)
+);
+
 CREATE TABLE personas(
 idpersona INT AUTO_INCREMENT NOT NULL, 
 nombre VARCHAR(50), 
@@ -78,6 +85,13 @@ FOREIGN KEY(fk_idtarea) REFERENCES tareas(idtarea),
 FOREIGN KEY(fk_idpersona) REFERENCES personas(idpersona)
 );
 -- datos mockeados para probar.
+-- Insertar datos en la tabla administradores 
+INSERT INTO administradores (nombreusuario, passwd) VALUES
+('alohomora', 'password123'),
+('wingardium', 'leviosa456'),
+('expecto', 'patronum789');
+
+
 -- Insertar datos en la tabla personas
 INSERT INTO personas (nombre, apellido, direccion, telefono, sexo, fechanacimiento, profesion) VALUES
 ('Juan', 'Perez', 'Calle Falsa 123', '1234567890', 'M', '1985-01-15', 'Ingeniero'),
@@ -128,8 +142,7 @@ INSERT INTO tarearecurso (fk_idtarea, fk_idrecurso, cantidad) VALUES
 
 -- Insertar datos en la tabla tareapersona
 INSERT INTO tareapersona (fk_idtarea, fk_idpersona, duracion) VALUES
-(1, 1, '5 días'),
-(2, 2, '10 días'),
-(3, 3, '15 días'),
-(4, 4, '20 días'),
-(5, 5, '25 días');
+(1, 2, '02:00:00'),
+(2, 1, '04:00:00'),
+(3, 3, '01:30:00');
+

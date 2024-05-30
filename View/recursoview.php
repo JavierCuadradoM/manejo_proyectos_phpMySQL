@@ -1,6 +1,12 @@
 <?php
 require_once '../Controller/RecursoDAO.php';
 
+session_start();
+if (!isset($_SESSION['nombreusuario'])) {
+    header("Location: login.php");
+    exit();
+}
+
 $recursos = findAll_recursos();
 ?>
 

@@ -3,6 +3,12 @@ require_once '../Controller/ProyectoDAO.php';
 require_once '../Controller/PersonaDAO.php';
 require_once '../Controller/ActividadDAO.php';
 
+session_start();
+if (!isset($_SESSION['nombreusuario'])) {
+    header("Location: login.php");
+    exit();
+}
+
 $personas = findAll_personas();
 $proyectos = findAll_proyectos();
 $actividades = findAll_actividades();
@@ -88,7 +94,7 @@ $actividades = findAll_actividades();
 
                 <label>Selecciona Usuario reponsable: 
                     <select  required name="responsable">
-                        <option selected disabled value="0" >Seleccione</option>
+                        <option selected disabled>Seleccione</option>
                         <?php foreach($personas as $datos): ?>
                             <?="<option value ='".$datos['idpersona']."'>".$datos['idpersona'].' - '.$datos['nombre']."</option>"?>
                         <?php endforeach?>
@@ -97,7 +103,14 @@ $actividades = findAll_actividades();
                 </br>
 
                 <label>Estado: 
-                    <input required  type="text" name="estado">
+                    <select required name="estado">
+                        <option selected disabled >Seleccione</option>
+                        <option value="Terminado">Terminado</option>
+                        <option value="Terminado">En progreso</option>
+                        <option value="Terminado">No iniciado</option>
+                        <option value="Terminado">No terminado</option>
+                        <option value="Terminado">Calcelado</option>
+                    </select>
                 </label>
                 </br>
                 <label>Presupuesto: 
@@ -158,7 +171,14 @@ $actividades = findAll_actividades();
                 </br>
 
                 <label>Estado: 
-                    <input required  type="text" name="estado">
+                    <select required name="estado">
+                        <option selected disabled >Seleccione</option>
+                        <option value="Terminado">Terminado</option>
+                        <option value="Terminado">En progreso</option>
+                        <option value="Terminado">No iniciado</option>
+                        <option value="Terminado">No terminado</option>
+                        <option value="Terminado">Calcelado</option>
+                    </select>
                 </label>
                 </br>
                 <label>Presupuesto: 

@@ -14,7 +14,8 @@ switch($_POST['accion']){
         $estado= $_POST['estado'];
         $proyecto = new Proyecto($id, $descripcion, $fechainicio, $fechaentrega, $valor, $lugar, $responsable, $estado);
         insertar_proyecto($proyecto);
-        header("Location: ../View/proyectoview.php");
+        echo "<script>alert('Exito al insertar'); window.location.href='../View/proyectoview.php';</script>";
+        //header("Location: ../View/proyectoview.php");
         
         break;
 
@@ -29,7 +30,8 @@ switch($_POST['accion']){
         $estado= $_POST['estado'];
         $proyecto = new Proyecto($id, $descripcion, $fechainicio, $fechaentrega, $valor, $lugar, $responsable, $estado);
         actualizar_proyecto($proyecto);
-        header("Location: ../View/proyectoview.php");
+        echo "<script>alert('Exito al actualizar'); window.location.href='../View/proyectoview.php';</script>";
+        //header("Location: ../View/proyectoview.php");
         
         break;
 
@@ -37,7 +39,8 @@ switch($_POST['accion']){
         $id = $_POST['idproyecto'];
         $proyecto = new Proyecto($id, '', '', '', '', '', '', '', '');
         eliminar_proyecto($proyecto);
-        header("Location: ../View/proyectoview.php");
+        echo "<script>alert('Exito al eliminar'); window.location.href='../View/proyectoview.php';</script>";
+        //header("Location: ../View/proyectoview.php");
         break;
 }
 ?>

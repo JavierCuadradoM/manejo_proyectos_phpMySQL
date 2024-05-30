@@ -2,6 +2,12 @@
 require_once '../Controller/ProyectoDAO.php';
 require_once '../Controller/PersonaDAO.php';
 
+session_start();
+if (!isset($_SESSION['nombreusuario'])) {
+    header("Location: login.php");
+    exit();
+}
+
 $personas = findAll_personas();
 $proyectos = findAll_proyectos();
 ?>
@@ -93,7 +99,14 @@ $proyectos = findAll_proyectos();
                 </br>
 
                 <label>Estado: 
-                    <input required  type="text" name="estado">
+                    <select required name="estado">
+                        <option selected disabled >Seleccione</option>
+                        <option value="Terminado">Terminado</option>
+                        <option value="Terminado">En progreso</option>
+                        <option value="Terminado">No iniciado</option>
+                        <option value="Terminado">No terminado</option>
+                        <option value="Terminado">Calcelado</option>
+                    </select>
                 </label>
                 </br>
 
@@ -150,7 +163,14 @@ $proyectos = findAll_proyectos();
                 </br>
 
                 <label>Estado: 
-                    <input required  type="text" name="estado">
+                    <select required name="estado">
+                        <option selected disabled >Seleccione</option>
+                        <option value="Terminado">Terminado</option>
+                        <option value="Terminado">En progreso</option>
+                        <option value="Terminado">No iniciado</option>
+                        <option value="Terminado">No terminado</option>
+                        <option value="Terminado">Calcelado</option>
+                    </select>
                 </label>
                 </br>
 

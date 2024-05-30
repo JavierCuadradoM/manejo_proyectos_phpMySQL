@@ -11,7 +11,8 @@ switch($_POST['accion']){
 
         $tarearecurso = new TareaRecurso($id,$fk_idtarea, $fk_idrecurso, $cantidad);
         insertar_tarea_recurso($tarearecurso);
-        header("Location: ../View/tarearecursoview.php");
+        echo "<script>alert('Exito al insertar'); window.location.href='../View/tarearecursoview.php';</script>";
+        //header("Location: ../View/tarearecursoview.php");
         break;
 
     case 'actualizar':
@@ -22,14 +23,16 @@ switch($_POST['accion']){
 
         $tarearecurso = new TareaRecurso($id,$fk_idtarea, $fk_idrecurso, $cantidad);
         actualizar_tarea_recurso($tarearecurso);
-        header("Location: ../View/tarearecursoview.php");
+        echo "<script>alert('Exito al actualizar'); window.location.href='../View/tarearecursoview.php';</script>";
+        //header("Location: ../View/tarearecursoview.php");
         break;
 
     case 'eliminar':
         $id = $_POST['idasignacion'];
         $tarearecurso = new TareaRecurso($id, '', '', '',);
         eliminar_tarea_recurso($tarearecurso);
-        header("Location: ../View/tarearecursoview.php");
+        echo "<script>alert('Exito al eliminar'); window.location.href='../View/tarearecursoview.php';</script>";
+        //header("Location: ../View/tarearecursoview.php");
         break;
 }
 ?>

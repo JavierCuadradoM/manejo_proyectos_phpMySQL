@@ -13,7 +13,8 @@ switch($_POST['accion']){
         $presupuesto= $_POST['presupuesto'];
         $tarea = new Tarea($id, $descripcion, $fechainicio, $fechafin,$fk_idactividad, $estado, $presupuesto);
         insertar_tarea($tarea);
-        header("Location: ../View/tareaview.php");
+        echo "<script>alert('Exito al insertar'); window.location.href='../View/tareaview.php';</script>";
+        //header("Location: ../View/tareaview.php");
         
         break;
 
@@ -27,7 +28,8 @@ switch($_POST['accion']){
         $presupuesto= $_POST['presupuesto'];
         $tarea = new Tarea($id, $descripcion, $fechainicio, $fechafin,$fk_idactividad, $estado, $presupuesto);
         actualizar_tarea($tarea);
-        header("Location: ../View/tareaview.php");
+        echo "<script>alert('Exito al actualizar'); window.location.href='../View/tareaview.php';</script>";
+        //header("Location: ../View/tareaview.php");
         
         break;
 
@@ -35,7 +37,8 @@ switch($_POST['accion']){
         $id = $_POST['idtarea'];
         $tarea = new Tarea($id, '', '', '', '', '', '', '');
         eliminar_tarea($tarea);
-        header("Location: ../View/tareaview.php");
+        echo "<script>alert('Exito al eliminar'); window.location.href='../View/tareaview.php';</script>";
+        //header("Location: ../View/tareaview.php");
         break;
 }
 ?>

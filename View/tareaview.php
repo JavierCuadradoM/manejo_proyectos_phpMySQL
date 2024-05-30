@@ -2,6 +2,12 @@
 require_once '../Controller/TareaDAO.php';
 require_once '../Controller/ActividadDAO.php';
 
+session_start();
+if (!isset($_SESSION['nombreusuario'])) {
+    header("Location: login.php");
+    exit();
+}
+
 $tareas = findAll_tareas();
 $actividades = findAll_actividades();
 ?>
@@ -84,8 +90,15 @@ $actividades = findAll_actividades();
                 </label>
                 </br>
 
-                <label>Estado:
-                    <input required type="text" name="estado">
+                <label>Estado: 
+                    <select required name="estado">
+                        <option selected disabled >Seleccione</option>
+                        <option value="Terminado">Terminado</option>
+                        <option value="Terminado">En progreso</option>
+                        <option value="Terminado">No iniciado</option>
+                        <option value="Terminado">No terminado</option>
+                        <option value="Terminado">Calcelado</option>
+                    </select>
                 </label>
                 </br>
                 <label>Presupuesto:
@@ -135,8 +148,15 @@ $actividades = findAll_actividades();
                 </label>
                 </br>
 
-                <label>Estado:
-                    <input required type="text" name="estado">
+                <label>Estado: 
+                    <select required name="estado">
+                        <option selected disabled >Seleccione</option>
+                        <option value="Terminado">Terminado</option>
+                        <option value="Terminado">En progreso</option>
+                        <option value="Terminado">No iniciado</option>
+                        <option value="Terminado">No terminado</option>
+                        <option value="Terminado">Calcelado</option>
+                    </select>
                 </label>
                 </br>
                 <label>Presupuesto:
@@ -168,7 +188,7 @@ $actividades = findAll_actividades();
         </section>
     </main>
     <footer>
-        <a target="titulo">Subir</a>
+        <a target="id:titulo">Subir</a>
     </footer>
 
 </body>

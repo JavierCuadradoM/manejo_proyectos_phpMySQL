@@ -11,7 +11,8 @@ switch($_POST['accion']){
 
         $recurso = new Recurso($id, $descripcion, $valor, $unidadmedida);
         insertar_recurso($recurso);
-        header("Location: ../View/recursoview.php");
+        echo "<script>alert('Exito al insertar'); window.location.href='../View/recursoview.php';</script>";
+        //header("Location: ../View/recursoview.php");
         
         break;
 
@@ -23,7 +24,8 @@ switch($_POST['accion']){
 
         $recurso = new Recurso($id, $descripcion, $valor, $unidadmedida);
         actualizar_recurso($recurso);
-        header("Location: ../View/recursoview.php");
+        echo "<script>alert('Exito al actualizar'); window.location.href='../View/recursoview.php';</script>";
+        //header("Location: ../View/recursoview.php");
         
         break;
 
@@ -31,7 +33,8 @@ switch($_POST['accion']){
         $id = $_POST['idrecurso'];
         $recurso = new Recurso($id, '', '', '',);
         eliminar_recurso($recurso);
-        header("Location: ../View/recursoview.php");
+        echo "<script>alert('Exito al eliminar'); window.location.href='../View/recursoview.php';</script>";
+        //header("Location: ../View/recursoview.php");
         break;
 }
 ?>

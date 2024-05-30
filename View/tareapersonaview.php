@@ -3,6 +3,12 @@ require_once '../Controller/TareaPersonaDAO.php';
 require_once '../Controller/PersonaDAO.php';
 require_once '../Controller/TareaDAO.php';
 
+session_start();
+if (!isset($_SESSION['nombreusuario'])) {
+    header("Location: login.php");
+    exit();
+}
+
 $tareapersonas = findAll_tarea_persona();
 $personas = findAll_personas();
 $tareas = findAll_tareas();
